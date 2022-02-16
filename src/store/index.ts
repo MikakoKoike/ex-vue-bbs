@@ -4,6 +4,9 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  strict: true,
+  actions: {},
+
   state: {
     articles: [
       new Article(3, "佐藤", "佐藤さんの記事", []),
@@ -17,6 +20,16 @@ export default new Vuex.Store({
     ],
   },
   mutations: {},
-  actions: {},
+  getters: {
+    /**
+     * 記事の一覧を返す
+     * @param state
+     * @param payload
+     */
+    getArticles(state) {
+      return state.articles;
+    },
+  },
+
   modules: {},
 });
