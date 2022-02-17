@@ -1,5 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import { Article } from "@/types/article";
+import { Comment } from "@/types/comment";
 
 Vue.use(Vuex);
 
@@ -18,13 +20,38 @@ export default new Vuex.Store({
         new Comment(11, "吉田", "吉田さんのコメント", 1),
       ]),
     ],
+  }, //end state
+  mutations: {
+    /**
+     * 記事を追加する.
+     */
+    addArticle(state, payload) {
+      state.articles.unshift(payload.article);
+    },
+    /**
+     * コメントを追加する.
+     */
+    addComment(state, payload) {
+      //articleIdと同じ番号を持っている記事idを探す
+      const newArray = state.articles.filter(
+        (article) => article.id === payload.comment.articleId
+      );
+      //newArrayから一件のみ取り出す
+      const newArticle = newArray[0];
+      newArticle.commentList.unshift(payload.comment);
+    },
+    /**
+     *  記事を削除する.
+     */
+    deleteArticle(state, payload) {
+      state.articles.splice(payload.articleIndex, 1);
+    },
   },
-  mutations: {},
   getters: {
     /**
-     * 記事の一覧を返す
-     * @param state
-     * @param payload
+     * 記事の一覧を返す.
+     *
+     * @returns 記事一覧
      */
     getArticles(state) {
       return state.articles;

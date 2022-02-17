@@ -1,3 +1,6 @@
+/**
+ *  コメント部品用のクラスです.
+ */
 export class Comment {
   constructor(
     //id

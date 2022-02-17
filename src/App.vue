@@ -1,12 +1,8 @@
 <template>
   <div id="app">
-    <!-- <div id="nav"> -->
     <div class="top-wrapper">
       <router-view />
-      <!-- <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> -->
     </div>
-    <!-- </div> -->
   </div>
 </template>
 

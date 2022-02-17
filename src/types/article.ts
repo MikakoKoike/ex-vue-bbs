@@ -1,6 +1,7 @@
 /**
  *  記事部品用のクラスです.
  */
+import { Comment } from "@/types/comment";
 export class Article {
   constructor(
     //id
@@ -10,7 +11,7 @@ export class Article {
     //内容
     private _content: string,
     //コメント一覧
-    private _commentList: Array<comment>
+    private _commentList: Array<Comment>
   ) {}
 
   public get id(): number {
@@ -37,11 +38,11 @@ export class Article {
     this._content = content;
   }
 
-  public get commentList(): Array<comment> {
+  public get commentList(): Array<Comment> {
     return this._commentList;
   }
 
-  public set commentList(commentList: Array<comment>) {
+  public set commentList(commentList: Array<Comment>) {
     this._commentList = commentList;
   }
 }
