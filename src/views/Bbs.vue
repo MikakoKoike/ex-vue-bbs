@@ -53,13 +53,16 @@ export default class Bbs extends Vue {
    * 記事を追加する.
    */
   addArticle(): void {
-    //最新記事IDに1プラスして記事IDを作成する（記事が一つもなければ0をセットする）
+    // 最新記事IDに1プラスして記事IDを作成する（記事が一つもなければ0をセットする）
     let articleList = this.$store.getters.getArticles;
     //投稿されている記事のうち最新の記事を取得する
     let article = articleList[0];
     //最新の記事のIDを取得する
     let currentId = article.id;
     let newestId = currentId + 1;
+    if (article.id === 0) {
+      currentId + 0;
+    }
 
     this.$store.commit("addArticle", {
       //payloadで渡すもの
@@ -94,7 +97,8 @@ export default class Bbs extends Vue {
    */
   deleteArticle(articleIndex: number): void {
     this.$store.commit("deleteArticle", {
-      articleIndex, //payloadで渡すもの
+      //
+      articleIndex: articleIndex, //payloadで渡すもの
     });
   }
 }

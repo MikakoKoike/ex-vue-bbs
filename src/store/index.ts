@@ -30,6 +30,9 @@ export default new Vuex.Store({
     },
     /**
      * コメントを追加する.
+     *
+     * @param state - ステート
+     * @param payload - 追加するコメント情報
      */
     addComment(state, payload) {
       //articleIdと同じ番号を持っている記事idを探す
@@ -38,6 +41,8 @@ export default new Vuex.Store({
       );
       //newArrayから一件のみ取り出す
       const newArticle = newArray[0];
+
+      //commentListにコメントを追加する
       newArticle.commentList.unshift(payload.comment);
     },
     /**
@@ -46,7 +51,7 @@ export default new Vuex.Store({
     deleteArticle(state, payload) {
       state.articles.splice(payload.articleIndex, 1);
     },
-  },
+  }, //end mutations
   getters: {
     /**
      * 記事の一覧を返す.
